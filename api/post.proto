@@ -11,13 +11,13 @@ service Posting {
 }
 
 message Post {
-  int64 likes = 2;
-  string text = 3;
+  int64 likes = 1;
+  string text = 2;
 }
 
 message Comment {
-  int64 likes = 2;
-  string text = 3;
+  int64 likes = 1;
+  string text = 2;
 }
 
 message CreatePostRequest{
