@@ -1,0 +1,48 @@
+syntax = "proto3";
+option go_package = "pkg/posting";
+import "google/protobuf/empty.proto";
+package posting;
+
+service Posting {
+  rpc CreatePost(CreatePostRequest) returns (CreatePostResponse) {}
+  rpc GetPost(GetPostRequest) returns (GetPostResponse) {}
+  rpc UpdatePost(UpdatePostRequest) returns (google.protobuf.Empty) {}
+  rpc DeletePost(DeletePostRequest) returns (google.protobuf.Empty) {}
+}
+
+message Post {
+  int64 likes = 2;
+  string text = 3;
+}
+
+message Comment {
+  int64 likes = 2;
+  string text = 3;
+}
+
+message CreatePostRequest{
+  Post post = 1;
+  repeated Comment comments = 2;
+}
+
+message CreatePostResponse{
+  int64 post_id = 1;
+}
+
+message GetPostRequest{
+  int64 id = 1;
+}
+
+message GetPostResponse{
+  Post post = 1;
+  repeated Comment comments = 2;
+}
+
+message DeletePostRequest{
+  int64 id = 1;
+}
+
+message UpdatePostRequest{
+  Post post = 1;
+  int64 id = 2;
+}
